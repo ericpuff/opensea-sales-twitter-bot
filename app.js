@@ -8,7 +8,7 @@ function formatAndSendTweet(event) {
     const tokenName = _.get(event, ['asset', 'name']);
     const image = _.get(event, ['asset', 'image_url']);
     const openseaLink = _.get(event, ['asset', 'permalink']);
-    const totalPrice = _.get(event, 'total_price');
+    const totalPrice = _.get(event, 'starting_price');
     const usdValue = _.get(event, ['payment_token', 'usd_price']);
 
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
@@ -16,7 +16,7 @@ function formatAndSendTweet(event) {
 
     const tweetText = `${tokenName}
     listed for ${formattedEthPrice}Ξ ($${formattedUsdPrice}) 
-    ${openseaLink}`;
+    ${openseaLink}?ref=oxf5c546b595e8e103014dc0aa49fa6f199efcce9d`;
 
     console.log(tweetText);
 
