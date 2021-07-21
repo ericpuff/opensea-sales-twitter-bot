@@ -17,7 +17,7 @@ const twitterClient = new twit(twitterConfig);
 async function handleDupesAndTweet(tokenName, tweetText, imageUrl, formattedEthPrice) {
     // Search our twitter account's recent tweets for anything exactly matching our new tweet's text
     twitterClient.get('search/tweets', { q: tokenName, count: 1, result_type: 'recent' }, (error, data, response) => {
-        if (!error && ${formattedEthPrice} <= 0.3) {
+        if (!error && formattedEthPrice <= '0.3') {
             const statuses = _.get(data, 'statuses');
 
             // No duplicate statuses found
