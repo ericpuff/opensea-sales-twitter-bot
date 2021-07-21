@@ -14,7 +14,6 @@ function formatAndSendTweet(event) {
 
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
-    //const bloodline = 
 
     const tweetText = `${tokenName}
     LISTED FOR SALE for ${formattedEthPrice}Ξ ($${formattedUsdPrice}) 
@@ -28,12 +27,12 @@ function formatAndSendTweet(event) {
 // Poll OpenSea every minute & retrieve all sales for a given collection in the last minute
 // Then pass those events over to the formatter before tweeting
 setInterval(() => {
-    const lastMinute = moment().startOf('minute').subtract(20, "seconds").unix();
+    const lastMinute = moment().startOf('minute').subtract(59, "seconds").unix();
 
     axios.get('https://api.opensea.io/api/v1/events', {
         params: {
             collection_slug: process.env.OPENSEA_COLLECTION_SLUG,
-            event_type: 'created',
+            event_type: 'successful',
             occurred_after='lastMinute'
             only_opensea: 'false'
         }
