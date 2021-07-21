@@ -32,7 +32,7 @@ setInterval(() => {
         params: {
             collection_slug: process.env.OPENSEA_COLLECTION_SLUG,
             event_type: 'created',
-            occurred_after='lastMinute',
+            occurred_after: lastMinute,
             only_opensea: 'false'
         }
     }).then((response) => {
