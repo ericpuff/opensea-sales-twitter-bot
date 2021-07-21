@@ -15,7 +15,7 @@ function formatAndSendTweet(event) {
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
 
     const tweetText = `${tokenName}
-    LISTED for ${formattedEthPrice}Ξ ($${formattedUsdPrice}) 
+    listed for ${formattedEthPrice}Ξ ($${formattedUsdPrice}) 
     ${openseaLink}`;
 
     console.log(tweetText);
