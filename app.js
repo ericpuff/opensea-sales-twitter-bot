@@ -34,7 +34,7 @@ setInterval(() => {
         params: {
             collection_slug: process.env.OPENSEA_COLLECTION_SLUG,
             event_type: 'created',
-            occurred_after: lastMinute,
+            occurred_after='2021-07-21T14:45'
             only_opensea: 'false'
         }
     }).then((response) => {
