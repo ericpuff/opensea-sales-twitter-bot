@@ -15,7 +15,7 @@ function formatAndSendTweet(event) {
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
     
-    var horseAttributes = axios.get(horseData);
+    //var horseAttributes = axios.get(horseData);
 
     // Converting JSON object to JS object
     //const obj = JSON.parse(horseAttributes);
@@ -29,7 +29,7 @@ function formatAndSendTweet(event) {
 
     const tweetText = `${tokenName}
     SOLD for ${formattedEthPrice}Ξ
-    ${horseAttributes}
+    ${horseData}
     ${openseaLink}?ref=oxf5c546b595e8e103014dc0aa49fa6f199efcce9d`;
 
     console.log(tweetText);
