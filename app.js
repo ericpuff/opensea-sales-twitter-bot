@@ -21,9 +21,9 @@ function formatAndSendTweet(event) {
 	method: "GET"
 })
 console.log(response.data)
-const horseAttributes = response.data;
 }
 getHorseData();
+const horseAttributes = getHorseData().response.data;
 
     // Converting JSON object to JS object
     var obj = JSON.parse(horseAttributes);
