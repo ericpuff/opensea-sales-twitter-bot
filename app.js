@@ -18,7 +18,7 @@ function formatAndSendTweet(event) {
     const horseAttributes = axios.get(horseData);
 
     // Converting JSON object to JS object
-    const obj = JSON.parse(horseAttributes);
+    const obj = JSON.parse(JSON.stringify(horseAttributes));
     
     // Printing all the values from the resulting object
      const color = `Coat Color: ` + obj.attributes[0].value;
