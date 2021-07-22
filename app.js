@@ -10,12 +10,37 @@ function formatAndSendTweet(event) {
     const openseaLink = _.get(event, ['asset', 'permalink']);
     const totalPrice = _.get(event, 'starting_price');
     const usdValue = _.get(event, ['payment_token', 'usd_price']);
+    const horseData = _.get(event, ['asset', 'token_metadata']);
 
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
+    
+function httpGet(theUrl) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+    } 
+      
+    var data = httpGet(horseData);
+  
+    // Converting JSON object to JS object
+    var obj = JSON.parse(data);
+    
+    // Printing all the values from the resulting object
+     const color = `Coat Color: ` + obj.attributes[0].value);
+     const bloodline = `Bloodline: ` + obj.attributes[1].value);
+     const breed = `Breed: ` + obj.attributes[2].value);
+     const genotype = `Genotype: ` + obj.attributes[3].value);
+     const gender = `Gender: ` + obj.attributes[4].value);
 
     const tweetText = `${tokenName}
     SOLD for ${formattedEthPrice}Ξ
+    ${bloodline}
+    ${breed}
+    ${gender}
+    ${genotype}
+    ${color}
     ${openseaLink}?ref=oxf5c546b595e8e103014dc0aa49fa6f199efcce9d`;
 
     console.log(tweetText);
