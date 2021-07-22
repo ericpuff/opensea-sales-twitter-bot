@@ -15,7 +15,7 @@ function formatAndSendTweet(event) {
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
 
     const tweetText = `${tokenName}
-    SOLD for ${formattedEthPrice}Ξ ($${formattedUsdPrice}) 
+    SOLD for ${formattedEthPrice}Ξ
     ${openseaLink}?ref=oxf5c546b595e8e103014dc0aa49fa6f199efcce9d`;
 
     console.log(tweetText);
