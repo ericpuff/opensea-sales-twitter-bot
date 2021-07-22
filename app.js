@@ -16,8 +16,7 @@ function formatAndSendTweet(event) {
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
 	
 function getHorseData() {
-	return axios.get(url).then(response => response.data)
-	console.log(attributes.data)
+	return axios.get(horseData).then(response => response.data)
 }
     
 getHorseData()
