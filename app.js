@@ -28,11 +28,11 @@ function httpGet(theUrl) {
     var obj = JSON.parse(data);
     
     // Printing all the values from the resulting object
-     const color = `Coat Color: ` + obj.attributes[0].value);
-     const bloodline = `Bloodline: ` + obj.attributes[1].value);
-     const breed = `Breed: ` + obj.attributes[2].value);
-     const genotype = `Genotype: ` + obj.attributes[3].value);
-     const gender = `Gender: ` + obj.attributes[4].value);
+     const color = `Coat Color: ` + obj.attributes[0].value;
+     const bloodline = `Bloodline: ` + obj.attributes[1].value;
+     const breed = `Breed: ` + obj.attributes[2].value;
+     const genotype = `Genotype: ` + obj.attributes[3].value;
+     const gender = `Gender: ` + obj.attributes[4].value;
 
     const tweetText = `${tokenName}
     SOLD for ${formattedEthPrice}Ξ
