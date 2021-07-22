@@ -11,21 +11,20 @@ function formatAndSendTweet(event) {
     const totalPrice = _.get(event, 'total_price');
     const usdValue = _.get(event, ['payment_token', 'usd_price']);
     const horseData = _.get(event, ['asset', 'token_metadata']);
-    const horseAttributes = null;
 
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
-    
-    async function getHorseData() {
-	const response = await axios ({
-	url: horseData,
-	method: "GET"
-})
-console.log(response.data)
-horseAttributes = response.data;
-return horseAttributes;
+	
+function getHorseData() {
+	return axios.get(url).then(response => response.data)
+	console.log(attributes.data)
 }
-getHorseData();
+    
+getHorseData()
+.then(data => {
+        response.json({ message: 'Request received!', data })
+    })
+	.catch(err => console.log(err))
     
     // Printing all the values from the resulting object
      const color = `Coat Color: ` + horseAttributes.attributes[0].value;
