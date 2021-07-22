@@ -5,7 +5,7 @@ const { ethers } = require('ethers');
 const tweet = require('./tweet');
 
 function httpGet(theUrl) {
-    var xmlHttp = new XMLHttpRequest();
+    const xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
     xmlHttp.send( null );
     return xmlHttp.responseText;
@@ -22,10 +22,10 @@ function formatAndSendTweet(event) {
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
       
-    var horseAttributes = httpGet(horseData);
+    const horseAttributes = httpGet(horseData);
   
     // Converting JSON object to JS object
-    var obj = JSON.parse(horseAttributes);
+    const obj = JSON.parse(horseAttributes);
     
     // Printing all the values from the resulting object
      const color = `Coat Color: ` + obj.attributes[0].value;
