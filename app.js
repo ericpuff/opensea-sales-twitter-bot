@@ -15,7 +15,7 @@ function formatAndSendTweet(event) {
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
 
     const tweetText = `${tokenName}
-    listed for ${formattedEthPrice}Ξ ($${formattedUsdPrice}) 
+    SOLD for ${formattedEthPrice}Ξ ($${formattedUsdPrice}) 
     ${openseaLink}?ref=oxf5c546b595e8e103014dc0aa49fa6f199efcce9d`;
 
     console.log(tweetText);
@@ -31,7 +31,7 @@ setInterval(() => {
     axios.get('https://api.opensea.io/api/v1/events', {
         params: {
             collection_slug: process.env.OPENSEA_COLLECTION_SLUG,
-            event_type: 'created',
+            event_type: 'successful',
             occurred_after: lastMinute,
             only_opensea: 'false'
         }
