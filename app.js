@@ -4,13 +4,6 @@ const moment = require('moment');
 const { ethers } = require('ethers');
 const tweet = require('./tweet');
 
-function httpGet(theUrl) {
-    const xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-} 
-
 function formatAndSendTweet(event) {
     const tokenName = _.get(event, ['asset', 'name']);
     const image = _.get(event, ['asset', 'image_url']);
@@ -21,9 +14,9 @@ function formatAndSendTweet(event) {
 
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
-      
-    const horseAttributes = httpGet(horseData);
-  
+    
+    const horseAttributes = axios.get(horseData);
+
     // Converting JSON object to JS object
     const obj = JSON.parse(horseAttributes);
     
