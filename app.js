@@ -11,6 +11,7 @@ function formatAndSendTweet(event) {
     const totalPrice = _.get(event, 'total_price');
     const usdValue = _.get(event, ['payment_token', 'usd_price']);
     const horseData = _.get(event, ['asset', 'token_metadata']);
+    const horseAttributes = null;
 
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
@@ -21,12 +22,9 @@ function formatAndSendTweet(event) {
 	method: "GET"
 })
 console.log(response.data)
+horseAttributes = response.data;
 }
 getHorseData();
-const horseAttributes = getHorseData().response.data;
-
-    // Converting JSON object to JS object
-    var obj = JSON.parse(horseAttributes);
     
     // Printing all the values from the resulting object
      const color = `Coat Color: ` + horseAttributes.attributes[0].value;
@@ -37,7 +35,7 @@ const horseAttributes = getHorseData().response.data;
 
     const tweetText = `${tokenName}
     SOLD for ${formattedEthPrice}Ξ
-    ${breed}
+    ${horseAttributes}
     ${openseaLink}?ref=oxf5c546b595e8e103014dc0aa49fa6f199efcce9d`;
 
     console.log(tweetText);
