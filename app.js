@@ -21,23 +21,23 @@ function formatAndSendTweet(event) {
 	method: "GET"
 })
 console.log(response.data)
+const horseAttributes = response.data;
 }
-
-const horseAttributes = getHorseData();
+getHorseData();
 
     // Converting JSON object to JS object
-    //const obj = JSON.parse(horseAttributes);
+    var obj = JSON.parse(horseAttributes);
     
     // Printing all the values from the resulting object
-     //const color = `Coat Color: ` + horseAttributes.attributes[0].value;
-     //const bloodline = `Bloodline: ` + horseAttributes.attributes[1].value;
-     //const breed = `Breed: ` + horseAttributes.attributes[2].value;
-     //const genotype = `Genotype: ` + horseAttributes.attributes[3].value;
-     //const gender = `Gender: ` + horseAttributes.attributes[4].value;
+     const color = `Coat Color: ` + horseAttributes.attributes[0].value;
+     const bloodline = `Bloodline: ` + horseAttributes.attributes[1].value;
+     const breed = `Breed: ` + horseAttributes.attributes[2].value;
+     const genotype = `Genotype: ` + horseAttributes.attributes[3].value;
+     const gender = `Gender: ` + horseAttributes.attributes[4].value;
 
     const tweetText = `${tokenName}
     SOLD for ${formattedEthPrice}Ξ
-    ${horseAttributes}
+    ${breed}
     ${openseaLink}?ref=oxf5c546b595e8e103014dc0aa49fa6f199efcce9d`;
 
     console.log(tweetText);
