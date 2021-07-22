@@ -23,6 +23,7 @@ function formatAndSendTweet(event) {
 })
 console.log(response.data)
 horseAttributes = response.data;
+return horseAttributes;
 }
 getHorseData();
     
