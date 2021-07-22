@@ -4,6 +4,13 @@ const moment = require('moment');
 const { ethers } = require('ethers');
 const tweet = require('./tweet');
 
+function httpGet(theUrl) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+} 
+
 function formatAndSendTweet(event) {
     const tokenName = _.get(event, ['asset', 'name']);
     const image = _.get(event, ['asset', 'image_url']);
@@ -14,18 +21,11 @@ function formatAndSendTweet(event) {
 
     const formattedEthPrice = ethers.utils.formatEther(totalPrice.toString());
     const formattedUsdPrice = (formattedEthPrice * usdValue).toFixed(2);
-    
-function httpGet(theUrl) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-    } 
       
-    var data = httpGet(horseData);
+    var horseAttributes = httpGet(horseData);
   
     // Converting JSON object to JS object
-    var obj = JSON.parse(data);
+    var obj = JSON.parse(horseAttributes);
     
     // Printing all the values from the resulting object
      const color = `Coat Color: ` + obj.attributes[0].value;
